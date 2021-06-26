@@ -136,6 +136,8 @@ class Play extends Phaser.Scene {
             boom.destroy();                       // remove explosion sprite
         }); 
 
+        this.sound.play('sfx_explosion');
+
         // score add and repaint
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
