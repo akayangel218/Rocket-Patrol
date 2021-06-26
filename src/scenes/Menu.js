@@ -14,7 +14,7 @@ class Menu extends Phaser.Scene {
         // display score
         let menuConfig = {
             fontFamily: 'Courier',
-            fontSize: '28px',
+            fontSize: '25px',
             backgroundColor: '#F3B141',
             color: '#843605',
             align: 'right',
@@ -31,5 +31,29 @@ class Menu extends Phaser.Scene {
         menuConfig.backgroundColor = '#00FF00';
         menuConfig.color = '#000';
         this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press <- for Novice or -> for Expert', menuConfig).setOrigin(0.5);
+
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+    }
+
+    update() {
+        if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+            // easy mode
+            game.settings = {
+                spaceshipSpeed: 3,
+                gameTimer: 60000    
+            }
+            this.sound.play('sfx_select');
+            this.scene.start('playScene');    
+          }
+        if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
+            // hard mode
+            game.settings = {
+                spaceshipSpeed: 4,
+                gameTimer: 45000    
+            }
+            this.sound.play('sfx_select');
+            this.scene.start('playScene');    
+        }
     }
 }
