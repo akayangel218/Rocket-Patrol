@@ -1,1 +1,1 @@
-console.log("hello world");
+let game = new phaser.Game();
