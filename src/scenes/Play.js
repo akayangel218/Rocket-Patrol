@@ -47,6 +47,8 @@ class Play extends Phaser.Scene {
             frameRate: 30
         });
 
+
+        // mod 1: score
         // initialize score
         this.p1Score = 0;
         
